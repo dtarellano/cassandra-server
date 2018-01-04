@@ -7,7 +7,7 @@ let queue = [];
 const app = express();
 app.use(BodyParser.json());
 app.get('/dispatch', (request, response) => {
-	console.log(request.body.driver);
+	console.log(request.body);
 	const limit = queue.length;
 	if (limit >= 100) {
 		db

@@ -2,10 +2,12 @@ const express = require('express');
 const BodyParser = require('body-parser');
 const cassandra = require('cassandra-driver');
 const db = require('./cassandradb.js').db;
+const analytics = require('./analytics.js').analytics;
 let queue = [];
 const app = express();
 app.use(BodyParser.json());
 app.get('/dispatch', (request, response) => {
+	console.log('hit server');
 	const limit = queue.length;
 	if (limit >= 100) {
 		db
